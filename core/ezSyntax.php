@@ -33,3 +33,8 @@ function createPublicAPI($value)
     header("Content-Type: application/json; charset=UTF-8");
     echo json_encode($value, JSON_PRETTY_PRINT);
 }
+
+function changeTitle($title)
+{
+    echo "<script>document.title = '$title'</script>";
+}

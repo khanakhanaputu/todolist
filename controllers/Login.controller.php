@@ -1,7 +1,7 @@
 <?php
 getFile("Models/model.model.php");
 getFile("views/login.view.php");
-class loginController extends Model
+class LoginController extends Model
 {
     public function __construct()
     {
@@ -13,7 +13,7 @@ class loginController extends Model
             $username = $_POST['username'];
             $password = $_POST['password'];
             $get_data = $this->getById("users", "username", "$username");
-            if ($get_data && $password === $get_data['password']) {
+            if ($password === $get_data['password']) {
                 echo "berhasil anjay";
                 session_start();
                 $_SESSION['userData'] = $get_data;

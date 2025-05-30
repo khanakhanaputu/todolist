@@ -6,7 +6,7 @@ class Middleware
     public function ifAuth()
     {
         session_start();
-        if (!isset($_SESSION['user_data'])) {
+        if (!isset($_SESSION['username'])) {
             echo "blom login";
             exit;
         }
