@@ -13,7 +13,7 @@ class Database
         $this->host = "localhost";
         $this->username = "root";
         $this->password = "";
-        $this->db = "toko";
+        $this->db = "todolist";
 
         $this->connect = mysqli_connect($this->host, $this->username, $this->password, $this->db);
 
