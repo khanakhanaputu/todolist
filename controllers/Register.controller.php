@@ -5,10 +5,11 @@ class registerController extends Model
 {
     function index()
     {
+        changeTitle("Register");
         if (isset($_POST['registerBtn'])) {
             $username = $_POST['username'];
             $password = $_POST['password'];
-            if ($this->getById("users", "username", "$username")) {
+            if ($this->getSingleById("users", "username", "$username")) {
                 echo "Username already taken";
                 exit;
             }

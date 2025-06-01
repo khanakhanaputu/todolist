@@ -9,10 +9,11 @@ class LoginController extends Model
     }
     public function index()
     {
+        changeTitle("Login");
         if (isset($_POST['loginBtn'])) {
             $username = $_POST['username'];
             $password = $_POST['password'];
-            $get_data = $this->getById("users", "username", "$username");
+            $get_data = $this->getSingleById("users", "username", "$username");
             if ($password === $get_data['password']) {
                 echo "berhasil anjay";
                 session_start();
