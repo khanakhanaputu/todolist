@@ -8,9 +8,17 @@ class DashboardController extends Model
         changeTitle("Dashboard");
         session_start();
         $get_user_task = $this->getAllById("activities", "userid", $_SESSION['userData']['userid']);
+
+
         if (isset($_POST['create_task_btn'])) {
             $this->createTask();
         }
+
+        if (isset($_POST['logout_btn'])) {
+            session_destroy();
+            header("Location: /login");
+        }
+
         dashboard($_SESSION['userData'], $get_user_task);
     }
     public function deleteTask($taskid)
@@ -33,6 +41,28 @@ class DashboardController extends Model
             exit;
         } catch (\Throwable $th) {
             header("Location: /dashboard");
+        }
+    }
+
+    public function markdone($taskid)
+    {
+        session_start();
+        $task_data = $this->getSingleById("activities", "taskId", "$taskid");
+        if ($task_data['userid'] === $_SESSION['userData']['userid']) {
+            $this->updateSingle("activities", "status", "Done", "taskId", "$taskid");
+            header("Location: /dashboard");
+            exit;
+        }
+    }
+
+    public function uncheck($taskid)
+    {
+        session_start();
+        $task_data = $this->getSingleById("activities", "taskId", "$taskid");
+        if ($task_data['userid'] === $_SESSION['userData']['userid']) {
+            $this->updateSingle("activities", "status", "not finished", "taskId", "$taskid");
+            header("Location: /dashboard");
+            exit;
         }
     }
 }

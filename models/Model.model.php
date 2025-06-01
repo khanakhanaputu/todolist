@@ -61,7 +61,7 @@ class Model extends Database
         $query = "INSERT INTO $table ($target) VALUES ($data)";
         mysqli_query($this->connect, $query);
     }
-    public function update($table, $field, $data, $target, $target_value)
+    public function updateSingle($table, $field, $data, $target, $target_value)
     {
         // Update data berdasarkan ID
         $query = "UPDATE $table SET $field='$data' WHERE $target='$target_value'";
