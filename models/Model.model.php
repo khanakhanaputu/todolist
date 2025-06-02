@@ -23,7 +23,7 @@ class Model extends Database
 
     public function getAllById($table, $field, $id)
     {
-        $query = "SELECT * FROM $table WHERE $field='$id'";
+        $query = "SELECT * FROM $table WHERE $field='$id' ";
         $result =  mysqli_query($this->connect, $query);
         $data = [];
         if (mysqli_num_rows($result) > 0) {

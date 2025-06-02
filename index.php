@@ -43,7 +43,6 @@ if (isset($detect_api[0]) && $detect_api[0] === 'api' || isset($detect_api[1]) &
         <?php
         $Router->run();
         ?>
-        <script></script>
     </body>
 
     </html>
