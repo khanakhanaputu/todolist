@@ -30,6 +30,7 @@ class DashboardController extends Model
             header("Location: /dashboard");
             exit;
         }
+        header("Location: /dashboard");
     }
     public function createTask()
     {

@@ -1,0 +1,28 @@
+# Ignore node_modules
+node_modules/
+
+# Ignore environment files
+.env
+.env.* 
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Optional: Ignore build output (misal pake Vite, Next.js, dst)
+dist/
+build/
+out/
+
+# Optional: Ignore IDE/editor files
+.vscode/
+.idea/
+
+# Optional: lock file (kalau kamu pake salah satu aja)
+# yarn.lock
+# package-lock.json
