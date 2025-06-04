@@ -13,7 +13,6 @@ class DashboardController extends Model
         if (isset($_POST['create_task_btn'])) {
             $this->createTask();
         }
-
         if (isset($_POST['logout_btn'])) {
             session_destroy();
             header("Location: /login");
@@ -21,7 +20,7 @@ class DashboardController extends Model
 
         dashboard($_SESSION['userData'], $get_user_task);
     }
-    public function deleteTask($taskid)
+    private function deleteTask($taskid)
     {
         $task_data = $this->getSingleById("activities", "taskId", "$taskid");
         session_start();
@@ -32,7 +31,7 @@ class DashboardController extends Model
         }
         header("Location: /dashboard");
     }
-    public function createTask()
+    private function createTask()
     {
         try {
             $task_name = $_POST['task_name'];

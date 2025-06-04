@@ -10,29 +10,39 @@ class Model extends Database
     public function getAll($table)
     {
         // Ambil semua data dari tabel
-        $query = "SELECT * FROM $table";
-        $hasil = mysqli_query($this->connect, $query);
-        $data = [];
-        if (mysqli_num_rows($hasil) > 0) {
-            while ($row = mysqli_fetch_assoc($hasil)) {
-                $data[] = $row;
+        try {
+            $query = "SELECT * FROM $table";
+            $hasil = mysqli_query($this->connect, $query);
+            $data = [];
+            if (mysqli_num_rows($hasil) > 0) {
+                while ($row = mysqli_fetch_assoc($hasil)) {
+                    $data[] = $row;
+                }
             }
+            return $data;
+        } catch (\Throwable $th) {
+            echo "error";
+            die();
         }
-        return $data;
     }
 
     public function getAllById($table, $field, $id)
     {
-        $query = "SELECT * FROM $table WHERE $field='$id' ";
-        $result =  mysqli_query($this->connect, $query);
-        $data = [];
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                $data[] = $row;
+        try {
+            $query = "SELECT * FROM $table WHERE $field='$id' ";
+            $result =  mysqli_query($this->connect, $query);
+            $data = [];
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $data[] = $row;
+                }
+                return $data;
+            } else {
+                return false;
             }
-            return $data;
-        } else {
-            return false;
+        } catch (\Throwable $th) {
+            echo "error";
+            die();
         }
     }
     public function getSingleById($table, $field, $id)
